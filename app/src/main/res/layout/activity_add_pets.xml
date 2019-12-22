@@ -23,9 +23,10 @@
             android:elevation="10dp">
 
             <ImageView
+                android:id="@+id/ivPetImg"
                 android:layout_width="220dp"
                 android:layout_height="220dp"
-                android:background="@drawable/dog"/>
+                android:background="@color/colorWhite"/>
 
         </androidx.cardview.widget.CardView>
         <Button

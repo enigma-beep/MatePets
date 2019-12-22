@@ -20,7 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(WelcomeActivity.this,HomeTest2Activity.class);
+                Intent i =new Intent(WelcomeActivity.this,AddPetsActivity.class);
 //                finish();
                 startActivity(i);
             }

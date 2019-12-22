@@ -74,7 +74,7 @@ public class RegActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(),"Registration successful, please check your email for verfication!",Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(RegActivity.this,ProfileActivity.class);
+                                Intent i = new Intent(RegActivity.this,RegActivity.class);
 //                                i.putExtra("passEmail",email);
                                 startActivity(i);
                             }

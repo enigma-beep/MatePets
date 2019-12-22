@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +32,12 @@ public class LogActivity extends AppCompatActivity {
     EditText vericode;
     TextView viewphone;
     FirebaseAuth mAuth;
+    Uri uriProfileImage;
     String codeSent;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("owners");
+    StorageReference storageReference;
+    private static final int CHOOSE_IMAGE=101;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +50,12 @@ public class LogActivity extends AppCompatActivity {
         vericode=findViewById(R.id.vericode);
         viewphone=findViewById(R.id.textView7);
 
-        final String phnew="+91"+getIntent().getStringExtra("phon");
+        final String phnew=getIntent().getStringExtra("phon");
+        final String mName=getIntent().getStringExtra("name");
+        final String mEmail=getIntent().getStringExtra("email");
+        final String mPass=getIntent().getStringExtra("pass");
+        final String mCity=getIntent().getStringExtra("city");
+        final String ownimg=getIntent().getStringExtra("ownimg");
         viewphone.setText(phnew);
 
 //        PhoneAuthProvider.getInstance().verifyPhoneNumber(phnew, 60, TimeUnit.SECONDS, this, mCallbacks);
@@ -79,6 +93,7 @@ public class LogActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),"OTP VERIFIED",Toast.LENGTH_LONG).show();
                             Intent i=new Intent(LogActivity.this,AddPetsActivity.class);
+                            finish();
                             startActivity(i);
 
                         }
