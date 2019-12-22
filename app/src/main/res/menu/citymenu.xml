@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/guwahati"
+        android:title="Guwahati"
+        />
+
+    <item
+        android:id="@+id/delhi"
+        android:title="Delhi"
+        />
+    <item
+        android:id="@+id/kolkata"
+        android:title="Kolkata"
+        />
+    <item
+        android:id="@+id/mumbai"
+        android:title="Mumbai"
+        />
+
+</menu>

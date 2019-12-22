@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeTest2Activity"
+    android:background="@color/colorWhite">
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/my_navigation_items"
+        app:itemBackground="@color/colorBlack"
+        app:itemTextColor="@color/colorWhite"
+        app:itemIconTint="@color/colorWhite"
+        app:itemTextAppearanceActive="@color/colorAccent"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/bottomNavBar"
+        android:background="@color/colorPrimaryDark"/>
+
+
+
+
+
+    <include
+        android:id="@+id/InstagramBottomBar"
+        layout="@layout/instagram_bottom_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

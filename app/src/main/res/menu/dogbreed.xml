@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/german_shepherd"
+        android:title="German Shepherd"
+        />
+
+    <item
+        android:id="@+id/labrador"
+        android:title="Labrador"
+        />
+    <item
+        android:id="@+id/golden_retriever"
+        android:title="Golden Retriever"
+        />
+    <item
+        android:id="@+id/beagle"
+        android:title="Beagle"
+        />
+
+</menu>

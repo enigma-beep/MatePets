@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "878550505491",
+    "firebase_url": "https://matepets-e145c.firebaseio.com",
+    "project_id": "matepets-e145c",
+    "storage_bucket": "matepets-e145c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878550505491:android:b1edb42e4bb549769287e6",
+        "android_client_info": {
+          "package_name": "com.example.matepets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878550505491-dd8a9fnu1rh5v7lvoqfes6sdvlgffmnr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.matepets",
+            "certificate_hash": "e8210081f4a1b94acbf749c6c083dddbeabc8c00"
+          }
+        },
+        {
+          "client_id": "878550505491-int0m2vqhin2k89ibg2sh1hpc3m872ng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.matepets",
+            "certificate_hash": "2b3c95ebda4255e5a6e9272232ca7a0f69051cff"
+          }
+        },
+        {
+          "client_id": "878550505491-1gsm53t751tm1l6b5gs2piu1m1rl88b1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDnQxMxiJBw7BX5xDqw3PSz6yqC_OVJbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878550505491-1gsm53t751tm1l6b5gs2piu1m1rl88b1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
