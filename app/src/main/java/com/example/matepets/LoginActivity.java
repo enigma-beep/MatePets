@@ -346,10 +346,6 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
-
-
-
-
     private void chooseImage() {
         Intent i = new Intent();
         i.setType("image/*");

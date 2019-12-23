@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="40dp"
-    android:paddingLeft="20dp"
-    android:paddingTop="40dp"
     tools:context=".HomeTestActivity"
     android:orientation="vertical"
     android:background="@color/colorWhite">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Users"
-        android:textSize="28dp"
-        android:paddingLeft="12dp"
-        android:layout_gravity="center"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="No users found!"
-        android:id="@+id/noUsersText"
-        android:visibility="gone"/>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/usersList"/>
-</LinearLayout>
+</RelativeLayout>
