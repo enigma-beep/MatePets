@@ -8,7 +8,8 @@
         <item android:id="@+id/vet"
             android:title="VET CONSULTANCY"
         android:icon="@drawable/likes" />
-         <item android:id="@+id/action_navigation"
+    <item
+        android:id="@+id/action_profile"
              android:title="PROFILE"
               android:icon="@drawable/profile" />
 

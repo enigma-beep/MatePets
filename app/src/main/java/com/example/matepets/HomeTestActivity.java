@@ -13,13 +13,19 @@
 //}
 package com.example.matepets;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeTestActivity extends AppCompatActivity {
 
@@ -77,12 +83,14 @@ public class HomeTestActivity extends AppCompatActivity {
 //    private Button prevBtn;
     private int currentPage;
     private int visitCount = 0;
+    BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_test);
 
+        navigation = findViewById(R.id.bottomNavBar);
         viewPager = findViewById(R.id.profileViewPager);
 //        dotsLayout=findViewById(R.id.dotsLayout);
 
@@ -90,6 +98,31 @@ public class HomeTestActivity extends AppCompatActivity {
 //        prevBtn=findViewById(R.id.buttonprevious);
 
         sliderAdapter = new ProfileSliderAdapter(this);
+
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        Intent a = new Intent(HomeTestActivity.this, HomeTestActivity.class);
+                        startActivity(a);
+                        break;
+                    case R.id.action_shop:
+                        break;
+                    case R.id.vet:
+                        break;
+                    case R.id.action_profile:
+                        Intent b = new Intent(HomeTestActivity.this, AccountActivity.class);
+                        startActivity(b);
+                        break;
+                }
+                return false;
+            }
+        });
         viewPager.setAdapter(sliderAdapter);
 //        addDotesInd(0);
         viewPager.addOnPageChangeListener(viewListener);

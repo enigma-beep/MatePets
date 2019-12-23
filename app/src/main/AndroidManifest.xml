@@ -13,19 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountActivity"></activity>
+        <activity
+            android:name=".AccountActivity"
+            android:theme="@style/noAnimTheme"></activity>
         <activity android:name=".Test2Activity" />
         <activity
             android:name=".HomeTest2Activity"
             android:theme="@style/noAnimTheme" />
-        <activity android:name=".HomeTestActivity" />
+        <activity
+            android:name=".HomeTestActivity"
+            android:theme="@style/noAnimTheme" />
         <activity android:name=".AddPetsActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".SigninActivity" />
         <activity android:name=".test1Activity" />
         <activity android:name=".EmailActivity" />
         <activity android:name=".RegActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".LogActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".LoginActivity" />
