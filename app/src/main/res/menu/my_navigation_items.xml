@@ -1,15 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
          <item android:id="@+id/action_home"
-             android:title="Home"
+             android:title="HOME"
               android:icon="@drawable/ic_pets_black_24dp" />
          <item android:id="@+id/action_shop"
-              android:title="Shopping"
+             android:title="SHOP"
               android:icon="@drawable/ic_shopping_cart_black_24dp" />
         <item android:id="@+id/vet"
-        android:title="vet"
+            android:title="VET CONSULTANCY"
         android:icon="@drawable/likes" />
          <item android:id="@+id/action_navigation"
-              android:title="profile"
+             android:title="PROFILE"
               android:icon="@drawable/profile" />
 
 
