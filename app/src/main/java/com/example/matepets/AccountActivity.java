@@ -67,7 +67,7 @@ public class AccountActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Intent a = new Intent(AccountActivity.this, HomeTestActivity.class);
+                        Intent a = new Intent(AccountActivity.this, FetchDetails.class);
                         startActivity(a);
                         break;
                     case R.id.action_shop:

@@ -15,7 +15,6 @@ package com.example.matepets;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -28,11 +27,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -46,37 +42,7 @@ public class HomeTestActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int i) {
-//            addDotesInd(i);
-//            currentPage=i;
-//            if(i==0){
-//                nextBtn.setEnabled(true);
-//                prevBtn.setEnabled(false);
-//                prevBtn.setVisibility(View.INVISIBLE);
-//                nextBtn.setText("NEXT");
-//                prevBtn.setText("");
-//            }
-//            else if(i==dots.length-1){
-//                nextBtn.setEnabled(true);
-//                prevBtn.setEnabled(true);
-//                prevBtn.setVisibility(View.VISIBLE);
-//                nextBtn.setText("FINISH");
-//                prevBtn.setText("BACK");
-//                nextBtn.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent i=new Intent(HomeTestActivity.this,HomeTestActivity.class);
-//                        startActivity(i);
-//                        finish();
-//                    }
-//                });
-//            }
-//            else{
-//                nextBtn.setEnabled(true);
-//                prevBtn.setEnabled(true);
-//                prevBtn.setVisibility(View.VISIBLE);
-//                nextBtn.setText("NEXT");
-//                prevBtn.setText("BACK");
-//            }
+//
         }
 
         @Override
@@ -84,6 +50,8 @@ public class HomeTestActivity extends AppCompatActivity {
 
         }
     };
+
+
     private ViewPager viewPager;
     private LinearLayout dotsLayout;
     private TextView[] dots;
@@ -110,6 +78,7 @@ public class HomeTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_test);
+
 
         navigation = findViewById(R.id.bottomNavBar);
         viewPager = findViewById(R.id.profileViewPager);
@@ -172,8 +141,8 @@ public class HomeTestActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Intent a = new Intent(HomeTestActivity.this, HomeTestActivity.class);
-                        startActivity(a);
+//                        Intent a = new Intent(HomeTestActivity.this, HomeTestActivity.class);
+//                        startActivity(a);
                         break;
                     case R.id.action_shop:
                         break;

@@ -1,13 +1,15 @@
 package com.example.matepets;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +37,16 @@ public class FetchDetails extends AppCompatActivity {
         setContentView(R.layout.activity_fetch_details);
         goToPets = findViewById(R.id.button2);
 
+        final ProgressDialog pd = new ProgressDialog(FetchDetails.this);
+        pd.setMessage("Loading...");
+        pd.show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                goToPets.performClick();
+            }
+        }, 4000);
         mAuth = FirebaseAuth.getInstance();
         pet_ref=owner_ref.child(mAuth.getCurrentUser().getUid()).child("pets");
 
