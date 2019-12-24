@@ -148,6 +148,9 @@ public class AccountActivity extends AppCompatActivity {
                         petCount = String.valueOf(dataSnapshot.getChildrenCount());
                         Toast.makeText(getApplicationContext(), petCount, Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        i.putStringArrayListExtra("slide_image", slide_image);
+                        i.putStringArrayListExtra("slide_pet_name", slide_pet_name);
+                        i.putStringArrayListExtra("slide_type", slide_type);
                         // i.putExtra("petcount",petCount);
                         startActivity(i);
 

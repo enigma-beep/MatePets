@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
@@ -26,6 +28,9 @@ public class HomeActivity extends AppCompatActivity {
     DatabaseReference dref=fdb.getReference("owners");
     DatabaseReference reff;
     BottomNavigationView navigation;
+    public ArrayList<String> slide_image = new ArrayList<String>();
+    public ArrayList<String> slide_pet_name = new ArrayList<String>();
+    public ArrayList<String> slide_type = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +46,19 @@ public class HomeActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
+        slide_image = getIntent().getStringArrayListExtra("slide_image");
+        slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
+        slide_type = getIntent().getStringArrayListExtra("slide_type");
+
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
                         Intent a = new Intent(HomeActivity.this, HomeTestActivity.class);
+                        a.putStringArrayListExtra("slide_image", slide_image);
+                        a.putStringArrayListExtra("slide_pet_name", slide_pet_name);
+                        a.putStringArrayListExtra("slide_type", slide_type);
                         startActivity(a);
                         break;
                     case R.id.action_shop:
