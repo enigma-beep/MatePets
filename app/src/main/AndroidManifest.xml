@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FetchDetails"></activity>
         <activity
             android:name=".AccountActivity"
-            android:theme="@style/noAnimTheme"></activity>
+            android:theme="@style/noAnimTheme" />
         <activity android:name=".Test2Activity" />
         <activity
             android:name=".HomeTest2Activity"

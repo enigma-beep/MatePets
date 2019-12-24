@@ -105,6 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                 else if(mRePass.getText().toString().equals("")){
                     mRePass.setError("Re-enter Password");
                 }
+                else if(uriProfileImage==null){
+                    Toast.makeText(getApplicationContext(),"Please update Profile Pic",Toast.LENGTH_LONG).show();
+                }
                 else if(!mRePass.getText().toString().equals(mPass.getText().toString())){
                     mRePass.setError("Password doesn't match with above Password");
                 }
@@ -139,9 +142,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(getApplicationContext(),"Data inserted!",Toast.LENGTH_SHORT).show();
-//                                            Intent i=new Intent(getApplicationContext(),.class);
-//                                            startActivity(i);
-//                                            finish();
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),"Data Not inserted!",Toast.LENGTH_SHORT).show();
@@ -176,6 +176,9 @@ public class LoginActivity extends AppCompatActivity {
                 else if(mRePass.getText().toString().equals("")){
                     mRePass.setError("Re-enter Password");
                 }
+                else if(uriProfileImage==null){
+                    Toast.makeText(getApplicationContext(),"Please update Profile image",Toast.LENGTH_LONG).show();
+                }
                 else if(!mRePass.getText().toString().equals(mPass.getText().toString())){
                     mRePass.setError("Password doesn't match with above Password");
                 }
@@ -194,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
                         mCity.setText(menuItem.getTitle());
                         return true;
                     }
@@ -235,7 +238,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String Icity = mCity.getText().toString().trim();
                                 String Iph = mPhone.getText().toString().trim();
                                 String Iemail=mEmail.getText().toString().trim();
-//                                String strTemp="Hello";
                                 uploadimg();
                                 owners info = new owners(
                                         Iname,
@@ -243,7 +245,6 @@ public class LoginActivity extends AppCompatActivity {
                                         Icity,
                                         Iph,
                                         ownimg
-//                                        strTemp
                                 );
 
                                 myRef.child(mAuth.getCurrentUser().getUid())
@@ -252,9 +253,6 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
                                             Toast.makeText(getApplicationContext(),"Data inserted!",Toast.LENGTH_SHORT).show();
-//                                            Intent i=new Intent(getApplicationContext(),.class);
-//                                            startActivity(i);
-//                                            finish();
                                         }
                                         else{
                                             Toast.makeText(getApplicationContext(),"Data Not inserted!",Toast.LENGTH_SHORT).show();

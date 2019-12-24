@@ -104,7 +104,7 @@ public class AddPetsActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
                         mType.setText(menuItem.getTitle());
                         return true;
                     }
@@ -123,7 +123,7 @@ public class AddPetsActivity extends AppCompatActivity {
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
-                            Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
                             mBreed.setText(menuItem.getTitle());
                             return true;
                         }
@@ -138,7 +138,7 @@ public class AddPetsActivity extends AppCompatActivity {
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
-                            Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
                             mBreed.setText(menuItem.getTitle());
                             return true;
                         }
@@ -161,7 +161,7 @@ public class AddPetsActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),""+ menuItem.getTitle(),Toast.LENGTH_LONG).show();
                         mGender.setText(menuItem.getTitle());
                         return true;
                     }
@@ -183,6 +183,9 @@ public class AddPetsActivity extends AppCompatActivity {
                 }
                 else if(mGender.getText().toString().equals("")){
                     mGender.setError("choose Gender");
+                }
+                else if(uriProfileImage==null){
+                    Toast.makeText(getApplicationContext(),"Please update Pet image",Toast.LENGTH_LONG).show();
                 }
                 else if(mAge.getText().toString().equals("")){
                     mAge.setError("choose Age");
