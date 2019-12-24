@@ -25,7 +25,9 @@
             android:name=".HomeTestActivity"
             android:theme="@style/noAnimTheme" />
         <activity android:name=".AddPetsActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/noAnimTheme" />
         <activity android:name=".SigninActivity" />
         <activity android:name=".test1Activity" />
         <activity android:name=".EmailActivity" />

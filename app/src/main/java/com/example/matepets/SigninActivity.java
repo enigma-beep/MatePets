@@ -1,5 +1,6 @@
 package com.example.matepets;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -33,6 +34,9 @@ public class SigninActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final ProgressDialog pd = new ProgressDialog(SigninActivity.this);
+                pd.setMessage("Loading...");
+                pd.show();
                 logIn();
             }
         });
@@ -71,7 +75,7 @@ public class SigninActivity extends AppCompatActivity {
                         String userid = ""+mAuth.getCurrentUser();
                         String uid = mAuth.getUid();
                         //Toast.makeText(getApplicationContext(),"CurrentUser :"+userid+"\nUid :"+uid,Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(getApplicationContext(), AccountActivity.class);
+                        Intent i = new Intent(getApplicationContext(), HomeTestActivity.class);
                         finish();
                         startActivity(i);
                         //clears previous activities
