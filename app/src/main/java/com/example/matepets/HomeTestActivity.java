@@ -98,7 +98,7 @@ public class HomeTestActivity extends AppCompatActivity {
     DatabaseReference pet_ref;
     FirebaseAuth mAuth;
     BottomNavigationView navigation;
-    public ArrayList<Integer> slide_image = new ArrayList<Integer>();
+    public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_pet_name = new ArrayList<String>();
     public ArrayList<String> slide_type = new ArrayList<String>();
     int petCount;
@@ -114,7 +114,7 @@ public class HomeTestActivity extends AppCompatActivity {
         navigation = findViewById(R.id.bottomNavBar);
         viewPager = findViewById(R.id.profileViewPager);
 
-        slide_image = getIntent().getIntegerArrayListExtra("slide_image");
+        slide_image = getIntent().getStringArrayListExtra("slide_image");
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
         petCount = Integer.parseInt(getIntent().getStringExtra("petCount"));

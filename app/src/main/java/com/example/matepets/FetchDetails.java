@@ -15,18 +15,26 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class FetchDetails extends AppCompatActivity {
     Button goToPets;
+    //Fetching pet details
     FirebaseDatabase fdb=FirebaseDatabase.getInstance();
     DatabaseReference owner_ref=fdb.getReference("owners");
     DatabaseReference pet_ref;
+    //authentication
     FirebaseAuth mAuth;
     int i;
     String petCount;
-    public ArrayList<Integer> slide_image = new ArrayList<Integer>();
+    //fetching pet images
+    FirebaseStorage store = FirebaseStorage.getInstance();
+    StorageReference ref = store.getReference("images");
+
+    public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_pet_name = new ArrayList<String>();
     public ArrayList<String> slide_type = new ArrayList<String>();
     @Override
@@ -61,7 +69,7 @@ public class FetchDetails extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(),pet_name,Toast.LENGTH_SHORT).show();
                     slide_pet_name.add(pet_name);
                     slide_type.add(pet_type);
-                    slide_image.add(R.drawable.dog1);
+                    slide_image.add(pet_img);
                     Toast.makeText(getApplicationContext(),"Fetched!",Toast.LENGTH_SHORT).show();
 
                     // Toast.makeText(getApplicationContext(),"Constructor!",Toast.LENGTH_SHORT).show();
@@ -79,7 +87,7 @@ public class FetchDetails extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(),HomeTestActivity.class);
-                i.putIntegerArrayListExtra("slide_image",slide_image);
+                i.putStringArrayListExtra("slide_image",slide_image);
                 i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                 i.putStringArrayListExtra("slide_type",slide_type);
                 i.putExtra("petCount",petCount);
