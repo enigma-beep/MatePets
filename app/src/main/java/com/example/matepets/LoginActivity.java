@@ -1,13 +1,9 @@
 package com.example.matepets;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,6 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.matepets.models.owners;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -180,6 +180,9 @@ public class LoginActivity extends AppCompatActivity {
                     mRePass.setError("Password doesn't match with above Password");
                 }
                 else{
+                    final ProgressDialog pd = new ProgressDialog(LoginActivity.this);
+                    pd.setMessage("Loading...");
+                    pd.show();
                     register();
                 }
             }
@@ -335,11 +338,13 @@ public class LoginActivity extends AppCompatActivity {
             uriProfileImage = data.getData();
 
             try {
-                Matrix matrix=new Matrix();
-                matrix.postRotate(90);
+//                Matrix matrix=new Matrix();
+//                matrix.postRotate(90);
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uriProfileImage);
-                Bitmap rotated=Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
-                mProfile.setImageBitmap(rotated);
+//                Bitmap rotated=Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+//                mProfile.setImageBitmap(rotated);
+                mProfile.setImageBitmap(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
