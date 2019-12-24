@@ -30,6 +30,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AccountActivity extends AppCompatActivity {
     TextView name, email, city, ph;
@@ -42,6 +43,9 @@ public class AccountActivity extends AppCompatActivity {
     String petCount;
     FirebaseStorage store = FirebaseStorage.getInstance();
     StorageReference ref = store.getReference("owner_images");
+    public ArrayList<String> slide_image = new ArrayList<String>();
+    public ArrayList<String> slide_pet_name = new ArrayList<String>();
+    public ArrayList<String> slide_type = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,11 @@ public class AccountActivity extends AppCompatActivity {
         img = (ImageView) findViewById(R.id.imageView);
         DatabaseReference newref = myRef.child(mAuth.getCurrentUser().getUid());
 
+        //passing valeus for HomeTestActivity
+        slide_image = getIntent().getStringArrayListExtra("slide_image");
+        slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
+        slide_type = getIntent().getStringArrayListExtra("slide_type");
+
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
@@ -67,8 +76,12 @@ public class AccountActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Intent a = new Intent(AccountActivity.this, FetchDetails.class);
-                        startActivity(a);
+                        Intent i = new Intent(AccountActivity.this, HomeTestActivity.class);
+                        i.putStringArrayListExtra("slide_image",slide_image);
+                        i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
+                        i.putStringArrayListExtra("slide_type",slide_type);
+                        startActivity(i);
+                        finish();
                         break;
                     case R.id.action_shop:
                         break;

@@ -82,9 +82,6 @@ public class FetchDetails extends AppCompatActivity {
                     slide_pet_name.add(pet_name);
                     slide_type.add(pet_type);
                     slide_image.add(pet_img);
-                    Toast.makeText(getApplicationContext(),"Fetched!",Toast.LENGTH_SHORT).show();
-
-                    // Toast.makeText(getApplicationContext(),"Constructor!",Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -102,8 +99,8 @@ public class FetchDetails extends AppCompatActivity {
                 i.putStringArrayListExtra("slide_image",slide_image);
                 i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                 i.putStringArrayListExtra("slide_type",slide_type);
-                i.putExtra("petCount",petCount);
                 startActivity(i);
+                finish();
             }
         });
     }

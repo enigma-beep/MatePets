@@ -75,7 +75,7 @@ public class SigninActivity extends AppCompatActivity {
                         String userid = ""+mAuth.getCurrentUser();
                         String uid = mAuth.getUid();
                         //Toast.makeText(getApplicationContext(),"CurrentUser :"+userid+"\nUid :"+uid,Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(getApplicationContext(), HomeTestActivity.class);
+                        Intent i = new Intent(getApplicationContext(), FetchDetails.class);
                         finish();
                         startActivity(i);
                         //clears previous activities

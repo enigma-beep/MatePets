@@ -86,48 +86,14 @@ public class HomeTestActivity extends AppCompatActivity {
         slide_image = getIntent().getStringArrayListExtra("slide_image");
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
-        petCount = Integer.parseInt(getIntent().getStringExtra("petCount"));
 
 //        dotsLayout=findViewById(R.id.dotsLayout);
 
 //        nextBtn=findViewById(R.id.buttonnext);
 //        prevBtn=findViewById(R.id.buttonprevious);
 
-        //fetching data from database(YourPets)
-        /*mAuth = FirebaseAuth.getInstance();
-        pet_ref=owner_ref.child(mAuth.getCurrentUser().getUid()).child("pets");
-
-        for ( i=1;i<=3;i++){
-            String count = String.valueOf(i);
-            pet_ref.child(count).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String pet_name = dataSnapshot.child("name").getValue().toString();
-                    String pet_type = dataSnapshot.child("type").getValue().toString();
-                    String pet_img = dataSnapshot.child("imageId").getValue().toString();
-                    //Toast.makeText(getApplicationContext(),pet_name,Toast.LENGTH_SHORT).show();
-                    slide_pet_name.add(pet_name);
-                    slide_type.add(pet_type);
-                    slide_image.add(R.drawable.dog1);
-                    wait = 1;
-
-                    Toast.makeText(getApplicationContext(),"Fetched! Wait = "+wait+" i = "+i,Toast.LENGTH_SHORT).show();
-
-                    // Toast.makeText(getApplicationContext(),"Constructor!",Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-        */
 
             sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
-            Toast.makeText(getApplicationContext(),"Done!",Toast.LENGTH_SHORT).show();
-
-
 
             Menu menu = navigation.getMenu();
             MenuItem menuItem = menu.getItem(0);
@@ -149,8 +115,12 @@ public class HomeTestActivity extends AppCompatActivity {
                     case R.id.vet:
                         break;
                     case R.id.action_profile:
-                        Intent b = new Intent(HomeTestActivity.this, AccountActivity.class);
-                        startActivity(b);
+                        Intent i = new Intent(HomeTestActivity.this, AccountActivity.class);
+                        i.putStringArrayListExtra("slide_image",slide_image);
+                        i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
+                        i.putStringArrayListExtra("slide_type",slide_type);
+                        startActivity(i);
+                        finish();
                         break;
                 }
                 return false;
