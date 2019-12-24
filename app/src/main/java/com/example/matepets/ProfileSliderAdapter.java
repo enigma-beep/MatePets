@@ -1,6 +1,7 @@
 package com.example.matepets;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,7 @@ public class ProfileSliderAdapter extends PagerAdapter {
 //    public String[] slide_desc = {
 //            "Golden Retriever", "Pug", "German Shepherd"
 //    };
-    public ArrayList<Integer> slide_image = new ArrayList<Integer>();
+    public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_heading = new ArrayList<String>();
     public ArrayList<String> slide_desc = new ArrayList<String>();
 
@@ -45,18 +47,18 @@ public class ProfileSliderAdapter extends PagerAdapter {
 
     public ProfileSliderAdapter(){}
 
-    public ProfileSliderAdapter(Context context,ArrayList<Integer> slide_image, ArrayList<String> slide_heading, ArrayList<String> slide_desc) {
+    public ProfileSliderAdapter(Context context,ArrayList<String> slide_image, ArrayList<String> slide_heading, ArrayList<String> slide_desc) {
         this.slide_image = slide_image;
         this.slide_heading = slide_heading;
         this.slide_desc = slide_desc;
         this.context = context;
     }
 
-    public ArrayList<Integer> getSlide_image() {
+    public ArrayList<String> getSlide_image() {
         return slide_image;
     }
 
-    public void setSlide_image(ArrayList<Integer> slide_image) {
+    public void setSlide_image(ArrayList<String> slide_image) {
         this.slide_image = slide_image;
     }
 
@@ -112,7 +114,8 @@ public class ProfileSliderAdapter extends PagerAdapter {
 
         //slideImageView.setImageResource(slide_image[position]);
 
-        slideImageView.setImageResource(slide_image.get(position));
+        //slideImageView.setImageBitmap(slide_image.get(position));
+        Picasso.get().load(slide_image.get(position)).into(slideImageView);
         slideTextView.setText(slide_heading.get(position));
         slideTextView2.setText(slide_desc.get(position));
 
