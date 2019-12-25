@@ -69,9 +69,9 @@ public class HomeTestActivity extends AppCompatActivity {
     public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_pet_name = new ArrayList<String>();
     public ArrayList<String> slide_type = new ArrayList<String>();
-    int petCount;
+    String type,breed,gender;
     int i;
-
+    String found;
 
 
     @Override
@@ -86,14 +86,26 @@ public class HomeTestActivity extends AppCompatActivity {
         slide_image = getIntent().getStringArrayListExtra("slide_image");
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
+        //fetching filters
+        type = getIntent().getStringExtra("type");
+        breed = getIntent().getStringExtra("breed");
+        gender = getIntent().getStringExtra("gender");
+
+        found = getIntent().getStringExtra("found");
 
 //        dotsLayout=findViewById(R.id.dotsLayout);
 
 //        nextBtn=findViewById(R.id.buttonnext);
 //        prevBtn=findViewById(R.id.buttonprevious);
 
+            if(found.equals("true")){
+                sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
+            }
+            else{
+                sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
+                Toast.makeText(getApplicationContext(),"OOPS! No Pets found for your filters!",Toast.LENGTH_LONG).show();
+            }
 
-            sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
 
             Menu menu = navigation.getMenu();
             MenuItem menuItem = menu.getItem(0);
@@ -119,6 +131,11 @@ public class HomeTestActivity extends AppCompatActivity {
                         i.putStringArrayListExtra("slide_image",slide_image);
                         i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                         i.putStringArrayListExtra("slide_type",slide_type);
+                        //passing filters
+                        i.putExtra("breed",breed);
+                        i.putExtra("gender",gender);
+                        i.putExtra("type",type);
+                        i.putExtra("found",found);
                         startActivity(i);
                         finish();
                         break;
