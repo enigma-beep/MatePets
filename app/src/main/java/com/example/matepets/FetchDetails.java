@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,7 +53,7 @@ public class FetchDetails extends AppCompatActivity {
             public void run() {
                 goToPets.performClick();
             }
-        }, 4000);
+        }, 1000);
         mAuth = FirebaseAuth.getInstance();
         pet_ref=owner_ref.child(mAuth.getCurrentUser().getUid()).child("pets");
 
@@ -70,7 +69,7 @@ public class FetchDetails extends AppCompatActivity {
             }
         });
 
-        for ( i=1;i<=4;i++){
+        for (i = 1; i <= 2; i++) {
             String count = String.valueOf(i);
             pet_ref.child(count).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -78,10 +77,16 @@ public class FetchDetails extends AppCompatActivity {
                     String pet_name = dataSnapshot.child("name").getValue().toString();
                     String pet_type = dataSnapshot.child("type").getValue().toString();
                     String pet_img = dataSnapshot.child("imageId").getValue().toString();
-                    //Toast.makeText(getApplicationContext(),pet_name,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),pet_name,Toast.LENGTH_SHORT).show();
                     slide_pet_name.add(pet_name);
                     slide_type.add(pet_type);
                     slide_image.add(pet_img);
+//                    Toast.makeText(getApplicationContext(),"FETCHED",Toast.LENGTH_SHORT).show();
+                    goToPets.setText("FETCHED");
+
+
+
+
                 }
 
                 @Override
@@ -91,16 +96,27 @@ public class FetchDetails extends AppCompatActivity {
             });
         }
 
+
         goToPets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(),HomeTestActivity.class);
-                i.putStringArrayListExtra("slide_image",slide_image);
-                i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
-                i.putStringArrayListExtra("slide_type",slide_type);
-                startActivity(i);
-                finish();
+                if (goToPets.getText().toString().equals("FETCHED")) {
+
+                    Intent i = new Intent(getApplicationContext(), HomeTestActivity.class);
+                    i.putStringArrayListExtra("slide_image", slide_image);
+                    i.putStringArrayListExtra("slide_pet_name", slide_pet_name);
+                    i.putStringArrayListExtra("slide_type", slide_type);
+                    startActivity(i);
+                    finish();
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            goToPets.performClick();
+                        }
+                    }, 1000);
+                }
             }
         });
     }
