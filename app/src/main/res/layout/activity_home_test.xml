@@ -7,6 +7,7 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".HomeTestActivity">
 
+
     <TextView
         android:id="@+id/discover"
         android:layout_width="wrap_content"
@@ -18,14 +19,21 @@
         android:textColor="@color/colorWhite"
         android:textSize="30dp" />
 
-    <androidx.viewpager.widget.ViewPager
+    <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
         android:id="@+id/profileViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavBar"
-        android:layout_below="@id/discover">
+        android:layout_below="@id/discover"
+        app:icvp_center_page_scale_offset="30dp"
+        app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+        app:icvp_max_page_scale="0.8"
+        app:icvp_medium_scaled="false"
+        app:icvp_min_page_scale="0.55"
+        app:icvp_min_page_scale_offset="5dp"
+        app:icvp_scroll_duration="250">
 
-    </androidx.viewpager.widget.ViewPager>
+    </com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"

@@ -1,10 +1,12 @@
 package com.example.matepets;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,31 +15,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProfileSliderAdapter extends PagerAdapter {
 
-//    public int[] slide_image = {
-//            R.drawable.dog1,
-//            R.drawable.dog2,
-//            R.drawable.dog3
-//
-//    };
-//    public String[] slide_heading = {
-//            "Ellie", "Ben", "Python"
-//    };
-//    public String[] slide_desc = {
-//            "Golden Retriever", "Pug", "German Shepherd"
-//    };
+
     public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_heading = new ArrayList<String>();
     public ArrayList<String> slide_desc = new ArrayList<String>();
@@ -99,18 +83,47 @@ public class ProfileSliderAdapter extends PagerAdapter {
         return view == object;
     }
 
+    Dialog myDialog;
+
+    public void ShowPopup(View v, Drawable pic, String name, String type) {
+        Button dismiss;
+        ImageView profilepic;
+        TextView mName, mType;
+
+        myDialog.setContentView(R.layout.profilepopup);
+        dismiss = myDialog.findViewById(R.id.pDismiss);
+        profilepic = myDialog.findViewById(R.id.pPetImg);
+        mName = myDialog.findViewById(R.id.pName);
+        mType = myDialog.findViewById(R.id.pType);
+        mName.setText(name);
+        mType.setText(type);
+        profilepic.setImageDrawable(pic);
+
+        dismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
+
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
 //        slide_image.add( R.drawable.dog1);
 //        slide_image.add( R.drawable.dog2);
 //        slide_image.add( R.drawable.dog3);
 
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.profile_slide_layout, container, false);
-        ImageView slideImageView = view.findViewById(R.id.imageView);
-        TextView slideTextView = view.findViewById(R.id.textView);
-        TextView slideTextView2 = view.findViewById(R.id.textView2);
+        final ImageView slideImageView = view.findViewById(R.id.imageView);
+        final TextView slideTextView = view.findViewById(R.id.textView);
+        final TextView slideTextView2 = view.findViewById(R.id.textView2);
+        final Button show = view.findViewById(R.id.showbtn);
+        myDialog = new Dialog(context);
+
+
 
         //slideImageView.setImageResource(slide_image[position]);
 
@@ -118,6 +131,22 @@ public class ProfileSliderAdapter extends PagerAdapter {
         Picasso.get().load(slide_image.get(position)).into(slideImageView);
         slideTextView.setText(slide_heading.get(position));
         slideTextView2.setText(slide_desc.get(position));
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShowPopup(view, slideImageView.getDrawable(), slideTextView.getText().toString(), slideTextView2.getText().toString());
+//
+            }
+        });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "" + slide_heading.get(position), Toast.LENGTH_SHORT).show();
+//                Intent i=new Intent(context,ProfileInfoActivity.class);
+//                ActivityOptionsCompat options=ActivityOptionsCompat.makeSceneTransitionAnimation(context,ViewCompat.getTransitionName(slideImageView));
+//                context.startActivity(i,options.toBundle());
+            }
+        });
 
         container.addView(view);
         return view;

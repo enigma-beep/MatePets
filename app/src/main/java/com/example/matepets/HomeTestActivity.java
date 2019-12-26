@@ -13,10 +13,13 @@
 //}
 package com.example.matepets;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +56,7 @@ public class HomeTestActivity extends AppCompatActivity {
     };
 
 
-    private ViewPager viewPager;
+    private HorizontalInfiniteCycleViewPager viewPager;
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private ProfileSliderAdapter sliderAdapter;
@@ -87,14 +91,11 @@ public class HomeTestActivity extends AppCompatActivity {
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
 
-//        dotsLayout=findViewById(R.id.dotsLayout);
 
-//        nextBtn=findViewById(R.id.buttonnext);
-//        prevBtn=findViewById(R.id.buttonprevious);
 
 
             sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
-
+        viewPager.setAdapter(sliderAdapter);
             Menu menu = navigation.getMenu();
             MenuItem menuItem = menu.getItem(0);
             menuItem.setChecked(true);
@@ -130,34 +131,26 @@ public class HomeTestActivity extends AppCompatActivity {
 //        addDotesInd(0);
         viewPager.addOnPageChangeListener(viewListener);
 
-//        nextBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewPager.setCurrentItem(currentPage+1);
-//            }
-//        });
-//        prevBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewPager.setCurrentItem(currentPage-1);
-//            }
-//        });
+
     }
 
-//    public void addDotesInd(int position) {
-//        dots = new TextView[3];
-//        dotsLayout.removeAllViews();
-//        for (int i = 0; i < dots.length; i++) {
-//            dots[i] = new TextView(this);
-//            dots[i].setText(Html.fromHtml("&#8226"));
-//            dots[i].setTextSize(35);
-//            dots[i].setTextColor(getResources().getColor(R.color.transparentwhite));
-//            dotsLayout.addView(dots[i]);
-//
-//        }
-//        if (dots.length > 0) {
-//            dots[position].setTextColor(getResources().getColor(R.color.colorWhite));
-//        }
-//    }
+    final public Object instantiateItem(View collection, final int pos) { //have to make final so we can see it inside of onClick()
+        LayoutInflater inflater = (LayoutInflater) collection.getContext()
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
+        View page = inflater.inflate(R.layout.profile_slide_layout, null);
+
+        page.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //this will log the page number that was click
+                Toast.makeText(getApplicationContext(), "this page was selected", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        ((ViewPager) collection).addView(page, 0);
+        return page;
+    }
 }
 

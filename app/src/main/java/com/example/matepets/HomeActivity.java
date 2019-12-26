@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,16 +48,31 @@ public class HomeActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
+//        Fade fade=new Fade();
+//        View decor =getWindow().getDecorView();
+//        fade.excludeTarget(R.id.discover,true);
+//        fade.excludeTarget(R.id.bottomNavBar,true);
+//        getWindow().setEnterTransition(fade);
+//        getWindow().setExitTransition(fade);
+
+
         slide_image = getIntent().getStringArrayListExtra("slide_image");
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
+
+        recview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "recview clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Intent a = new Intent(HomeActivity.this, HomeTestActivity.class);
+                        Intent a = new Intent(HomeActivity.this, FetchDetails.class);
                         a.putStringArrayListExtra("slide_image", slide_image);
                         a.putStringArrayListExtra("slide_pet_name", slide_pet_name);
                         a.putStringArrayListExtra("slide_type", slide_type);
@@ -77,9 +94,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
+
+
         FirebaseRecyclerAdapter<pets, rc> fca=new FirebaseRecyclerAdapter<pets, rc>(
                 pets.class,
                 R.layout.row,

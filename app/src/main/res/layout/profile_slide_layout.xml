@@ -8,9 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp"
+        android:layout_margin="10dp"
         android:background="@color/colorWhite"
         android:elevation="20dp"
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
@@ -30,7 +28,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="100dp"
+                android:layout_weight="1"
                 android:elevation="20dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="15dp">
@@ -41,7 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:transitionName="example_transition" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -52,6 +51,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="TextView"
+                android:layout_weight="0.5"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="25dp" />
 
@@ -60,12 +60,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_weight="0.5"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/showbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/btnbg33"
+                android:onClick="ShowPopup"
+                android:text="show details"
+                android:textColor="@color/colorWhite" />
 
 
         </LinearLayout>

@@ -70,6 +70,13 @@ public class AccountActivity extends AppCompatActivity {
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
+//        Fade fade=new Fade();
+//        View decor =getWindow().getDecorView();
+//        fade.excludeTarget(R.id.discover,true);
+//        fade.excludeTarget(R.id.bottomNavBar,true);
+//        getWindow().setEnterTransition(fade);
+//        getWindow().setExitTransition(fade);
+
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

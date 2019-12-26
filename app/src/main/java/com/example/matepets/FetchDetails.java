@@ -69,7 +69,7 @@ public class FetchDetails extends AppCompatActivity {
             }
         });
 
-        for (i = 1; i <= 2; i++) {
+        for (i = 1; i <= 3; i++) {
             String count = String.valueOf(i);
             pet_ref.child(count).addValueEventListener(new ValueEventListener() {
                 @Override
