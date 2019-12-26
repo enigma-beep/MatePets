@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseDatabase fdb=FirebaseDatabase.getInstance();
     DatabaseReference dref=fdb.getReference("owners");
     DatabaseReference reff;
+    String gender,breed,type,found;
     BottomNavigationView navigation;
     public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_pet_name = new ArrayList<String>();
@@ -44,6 +45,13 @@ public class HomeActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         reff=dref.child(mAuth.getCurrentUser().getUid()).child("pets");
         navigation = findViewById(R.id.bottomNavBar);
+
+        //fetching filters
+        type = getIntent().getStringExtra("type");
+        breed = getIntent().getStringExtra("breed");
+        gender = getIntent().getStringExtra("gender");
+        found=getIntent().getStringExtra("found");
+
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
@@ -72,10 +80,15 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Intent a = new Intent(HomeActivity.this, FetchDetails.class);
+                        Intent a = new Intent(HomeActivity.this, HomeTestActivity.class);
                         a.putStringArrayListExtra("slide_image", slide_image);
                         a.putStringArrayListExtra("slide_pet_name", slide_pet_name);
                         a.putStringArrayListExtra("slide_type", slide_type);
+                        //passing filters
+                        a.putExtra("breed",breed);
+                        a.putExtra("gender",gender);
+                        a.putExtra("type",type);
+                        a.putExtra("found",found);
                         startActivity(a);
                         break;
                     case R.id.action_shop:

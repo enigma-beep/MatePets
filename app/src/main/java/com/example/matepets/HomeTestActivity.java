@@ -75,6 +75,8 @@ public class HomeTestActivity extends AppCompatActivity {
     public ArrayList<String> slide_type = new ArrayList<String>();
     int petCount;
     int i;
+    String found;
+    String type,breed,gender;
 
 
 
@@ -91,10 +93,21 @@ public class HomeTestActivity extends AppCompatActivity {
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
 
+        //fetching filters
+        found = getIntent().getStringExtra("found");
+        type = getIntent().getStringExtra("type");
+        breed = getIntent().getStringExtra("breed");
+        gender = getIntent().getStringExtra("gender");
 
 
-
+        if(found.equals("true")){
             sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
+        }
+        else{
+            sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
+            Toast.makeText(getApplicationContext(),"OOPS! No matches found for your filters",Toast.LENGTH_LONG).show();
+        }
+
         viewPager.setAdapter(sliderAdapter);
             Menu menu = navigation.getMenu();
             MenuItem menuItem = menu.getItem(0);
@@ -120,6 +133,11 @@ public class HomeTestActivity extends AppCompatActivity {
                         i.putStringArrayListExtra("slide_image",slide_image);
                         i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                         i.putStringArrayListExtra("slide_type",slide_type);
+                        //passing filters
+                        i.putExtra("breed",breed);
+                        i.putExtra("gender",gender);
+                        i.putExtra("type",type);
+                        i.putExtra("found",found);
                         startActivity(i);
                         finish();
                         break;

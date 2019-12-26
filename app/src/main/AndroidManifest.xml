@@ -32,6 +32,7 @@
             android:name=".HomeActivity"
             android:theme="@style/noAnimTheme" />
         <activity android:name=".SigninActivity" />
+        <activity android:name=".FilterActivity" />
         <activity android:name=".test1Activity" />
         <activity android:name=".EmailActivity" />
         <activity android:name=".RegActivity" />

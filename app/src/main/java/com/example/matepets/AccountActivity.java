@@ -169,7 +169,11 @@ public class AccountActivity extends AppCompatActivity {
                         i.putStringArrayListExtra("slide_image", slide_image);
                         i.putStringArrayListExtra("slide_pet_name", slide_pet_name);
                         i.putStringArrayListExtra("slide_type", slide_type);
-                        // i.putExtra("petcount",petCount);
+                        //passing filters
+                        i.putExtra("breed",breed);
+                        i.putExtra("gender",gender);
+                        i.putExtra("type",type);
+                        i.putExtra("found",found);
                         startActivity(i);
 
                     }
