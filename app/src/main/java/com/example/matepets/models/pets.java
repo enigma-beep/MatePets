@@ -3,7 +3,7 @@ package com.example.matepets.models;
 public class pets {
     public String name, type, breed, color, gender, age, imageId;
 
-    pets() {
+    public pets() {
     }
 
     public pets(String name, String type, String breed, String color, String age, String gender, String imageId) {

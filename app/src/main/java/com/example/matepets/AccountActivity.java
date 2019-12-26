@@ -41,6 +41,7 @@ public class AccountActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("owners");
     String petCount;
+    String type,breed,gender,found;
     FirebaseStorage store = FirebaseStorage.getInstance();
     StorageReference ref = store.getReference("owner_images");
     public ArrayList<String> slide_image = new ArrayList<String>();
@@ -66,6 +67,11 @@ public class AccountActivity extends AppCompatActivity {
         slide_image = getIntent().getStringArrayListExtra("slide_image");
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
+        //fetching filters
+        type = getIntent().getStringExtra("type");
+        breed = getIntent().getStringExtra("breed");
+        gender = getIntent().getStringExtra("gender");
+        found=getIntent().getStringExtra("found");
 
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(3);
@@ -87,6 +93,11 @@ public class AccountActivity extends AppCompatActivity {
                         i.putStringArrayListExtra("slide_image",slide_image);
                         i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                         i.putStringArrayListExtra("slide_type",slide_type);
+                        //passing filters
+                        i.putExtra("breed",breed);
+                        i.putExtra("gender",gender);
+                        i.putExtra("type",type);
+                        i.putExtra("found",found);
                         startActivity(i);
                         finish();
                         break;
