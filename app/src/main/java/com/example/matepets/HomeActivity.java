@@ -97,6 +97,14 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                         Intent b = new Intent(HomeActivity.this, AccountActivity.class);
+                        b.putStringArrayListExtra("slide_image", slide_image);
+                        b.putStringArrayListExtra("slide_pet_name", slide_pet_name);
+                        b.putStringArrayListExtra("slide_type", slide_type);
+                        //passing filters
+                        b.putExtra("breed",breed);
+                        b.putExtra("gender",gender);
+                        b.putExtra("type",type);
+                        b.putExtra("found",found);
                         startActivity(b);
                         break;
                 }

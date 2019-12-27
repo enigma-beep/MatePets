@@ -44,6 +44,9 @@ public class FetchDetails extends AppCompatActivity {
     public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_pet_name = new ArrayList<String>();
     public ArrayList<String> slide_type = new ArrayList<String>();
+    public ArrayList<String> slide_breed = new ArrayList<String>();
+    public ArrayList<String> slide_color = new ArrayList<String>();
+    public ArrayList<String> slide_age = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,15 +111,18 @@ public class FetchDetails extends AppCompatActivity {
                                               String pet_name = snapshot1.child("name").getValue().toString();
                                               String pet_type = snapshot1.child("type").getValue().toString();
                                               String pet_img = snapshot1.child("imageId").getValue().toString();
-//                                            pets obj_pets = new pets();
-//                                            obj_pets.setName(pet_name);
-//                                            obj_pets.setType(pet_type);
-//                                            obj_pets.setImageId(pet_img);
+                                              String pet_color = snapshot1.child("color").getValue().toString();
+                                              String pet_breed = snapshot1.child("breed").getValue().toString();
+                                              String pet_age = snapshot1.child("age").getValue().toString();
+
                                               pets obj_pets = snapshot1.getValue(pets.class);
                                               if(obj_pets.getType().equals(type) && obj_pets.getGender().equals(gender) && obj_pets.getBreed().equals(breed)){
                                                   slide_pet_name.add(pet_name);
                                                   slide_type.add(pet_type);
                                                   slide_image.add(pet_img);
+                                                  slide_age.add(pet_age);
+                                                  slide_breed.add(pet_breed);
+                                                  slide_color.add(pet_color);
                                                   found = "true";
                                               }
                                           }

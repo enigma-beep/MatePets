@@ -78,6 +78,29 @@
                 android:onClick="ShowPopup"
                 android:text="show details"
                 android:textColor="@color/colorWhite" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewBreed"
+                android:text="breed"
+                android:visibility="invisible"
+                android:layout_gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewColor"
+                android:text="color"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewAge"
+                android:text="age"
+                android:visibility="invisible"
+                android:layout_gravity="center"/>
+
 
 
         </LinearLayout>

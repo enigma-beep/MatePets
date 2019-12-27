@@ -25,53 +25,25 @@ public class ProfileSliderAdapter extends PagerAdapter {
     public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_heading = new ArrayList<String>();
     public ArrayList<String> slide_desc = new ArrayList<String>();
+    public ArrayList<String> slide_breed = new ArrayList<String>();
+    public ArrayList<String> slide_color = new ArrayList<String>();
+    public ArrayList<String> slide_age = new ArrayList<String>();
 
     Context context;
     LayoutInflater layoutInflater;
 
     public ProfileSliderAdapter(){}
 
-    public ProfileSliderAdapter(Context context,ArrayList<String> slide_image, ArrayList<String> slide_heading, ArrayList<String> slide_desc) {
+    public ProfileSliderAdapter(Context context,ArrayList<String> slide_image, ArrayList<String> slide_heading, ArrayList<String> slide_desc,ArrayList<String> slide_breed,ArrayList<String> slide_color,ArrayList<String> slide_age) {
         this.slide_image = slide_image;
         this.slide_heading = slide_heading;
         this.slide_desc = slide_desc;
+        this.slide_breed = slide_breed;
+        this.slide_color = slide_color;
+        this.slide_age = slide_age;
         this.context = context;
     }
 
-    public ArrayList<String> getSlide_image() {
-        return slide_image;
-    }
-
-    public void setSlide_image(ArrayList<String> slide_image) {
-        this.slide_image = slide_image;
-    }
-
-    public ArrayList<String> getSlide_heading() {
-        return slide_heading;
-    }
-
-    public void setSlide_heading(ArrayList<String> slide_heading) {
-        this.slide_heading = slide_heading;
-    }
-
-    public ArrayList<String> getSlide_desc() {
-        return slide_desc;
-    }
-
-    public void setSlide_desc(ArrayList<String> slide_desc) {
-        this.slide_desc = slide_desc;
-    }
-
-//    FirebaseDatabase fdb=FirebaseDatabase.getInstance();
-//    DatabaseReference owner_ref=fdb.getReference("owners");
-//    DatabaseReference pet_ref;
-//    FirebaseAuth mAuth;
-
-
-
-    public ProfileSliderAdapter(Context context) {
-        this.context = context;
-    }
 
     @Override
     public int getCount() {
@@ -85,18 +57,24 @@ public class ProfileSliderAdapter extends PagerAdapter {
 
     Dialog myDialog;
 
-    public void ShowPopup(View v, Drawable pic, String name, String type) {
+    public void ShowPopup(View v, Drawable pic, String name, String type,String breed, String color, String age) {
         Button dismiss;
         ImageView profilepic;
-        TextView mName, mType;
+        TextView mName, mType,mBreed,mColor,mAge;
 
         myDialog.setContentView(R.layout.profilepopup);
         dismiss = myDialog.findViewById(R.id.pDismiss);
         profilepic = myDialog.findViewById(R.id.pPetImg);
         mName = myDialog.findViewById(R.id.pName);
         mType = myDialog.findViewById(R.id.pType);
+        mBreed= myDialog.findViewById(R.id.pBreed);
+        mColor=myDialog.findViewById(R.id.pColor);
+        mAge=myDialog.findViewById(R.id.pAge);
         mName.setText(name);
         mType.setText(type);
+        mBreed.setText(breed);
+        mColor.setText(color);
+        mAge.setText(age);
         profilepic.setImageDrawable(pic);
 
         dismiss.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +98,9 @@ public class ProfileSliderAdapter extends PagerAdapter {
         final ImageView slideImageView = view.findViewById(R.id.imageView);
         final TextView slideTextView = view.findViewById(R.id.textView);
         final TextView slideTextView2 = view.findViewById(R.id.textView2);
+        final TextView textViewBreed=view.findViewById(R.id.textviewBreed);
+        final TextView textViewColor=view.findViewById(R.id.textviewColor);
+        final TextView textViewAge=view.findViewById(R.id.textviewAge);
         final Button show = view.findViewById(R.id.showbtn);
         myDialog = new Dialog(context);
 
@@ -131,11 +112,15 @@ public class ProfileSliderAdapter extends PagerAdapter {
         Picasso.get().load(slide_image.get(position)).into(slideImageView);
         slideTextView.setText(slide_heading.get(position));
         slideTextView2.setText(slide_desc.get(position));
+
+//        textViewAge.setText(slide_age.get(position));
+//        textViewBreed.setText(slide_breed.get(position));
+//        textViewColor.setText(slide_color.get(position));
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShowPopup(view, slideImageView.getDrawable(), slideTextView.getText().toString(), slideTextView2.getText().toString());
-//
+                ShowPopup(view, slideImageView.getDrawable(), slideTextView.getText().toString(), slideTextView2.getText().toString(),textViewBreed.getText().toString(),textViewColor.getText().toString(),textViewAge.getText().toString());
+//              Toast.makeText(context,slide_age.get(position).toString(),Toast.LENGTH_SHORT).show();
             }
         });
         view.setOnClickListener(new View.OnClickListener() {

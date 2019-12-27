@@ -73,6 +73,10 @@ public class HomeTestActivity extends AppCompatActivity {
     public ArrayList<String> slide_image = new ArrayList<String>();
     public ArrayList<String> slide_pet_name = new ArrayList<String>();
     public ArrayList<String> slide_type = new ArrayList<String>();
+    public ArrayList<String> slide_breed = new ArrayList<String>();
+    public ArrayList<String> slide_color = new ArrayList<String>();
+    public ArrayList<String> slide_age = new ArrayList<String>();
+
     int petCount;
     int i;
     String found;
@@ -92,6 +96,9 @@ public class HomeTestActivity extends AppCompatActivity {
         slide_image = getIntent().getStringArrayListExtra("slide_image");
         slide_pet_name = getIntent().getStringArrayListExtra("slide_pet_name");
         slide_type = getIntent().getStringArrayListExtra("slide_type");
+        slide_breed = getIntent().getStringArrayListExtra("slide_breed");
+        slide_color = getIntent().getStringArrayListExtra("slide_color");
+        slide_age = getIntent().getStringArrayListExtra("slide_age");
 
         //fetching filters
         found = getIntent().getStringExtra("found");
@@ -101,10 +108,10 @@ public class HomeTestActivity extends AppCompatActivity {
 
 
         if(found.equals("true")){
-            sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
+            sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type,slide_breed,slide_color,slide_age);
         }
         else{
-            sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type);
+            sliderAdapter = new ProfileSliderAdapter(HomeTestActivity.this,slide_image,slide_pet_name,slide_type,slide_breed,slide_color,slide_age);
             Toast.makeText(getApplicationContext(),"OOPS! No matches found for your filters",Toast.LENGTH_LONG).show();
         }
 
@@ -133,6 +140,9 @@ public class HomeTestActivity extends AppCompatActivity {
                         i.putStringArrayListExtra("slide_image",slide_image);
                         i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                         i.putStringArrayListExtra("slide_type",slide_type);
+                        i.putStringArrayListExtra("slide_breed",slide_breed);
+                        i.putStringArrayListExtra("slide_color",slide_color);
+                        i.putStringArrayListExtra("slide_age",slide_age);
                         //passing filters
                         i.putExtra("breed",breed);
                         i.putExtra("gender",gender);

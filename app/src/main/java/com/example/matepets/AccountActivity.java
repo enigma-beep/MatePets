@@ -106,8 +106,6 @@ public class AccountActivity extends AppCompatActivity {
                     case R.id.vet:
                         break;
                     case R.id.action_profile:
-                        Intent b = new Intent(AccountActivity.this, AccountActivity.class);
-                        startActivity(b);
                         break;
                 }
                 return false;
