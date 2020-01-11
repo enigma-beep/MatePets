@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    android:orientation="vertical"
+    tools:context=".WelcomeMainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-black"
+        android:text="WELCOME TO\nMATEPETS"
+        android:textColor="@color/white"
+        android:textSize="40dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fbsigncard"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/signcard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="25dp"
+        facebook:cardBackgroundColor="#1877F2"
+        facebook:cardElevation="5dp">
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fb_sign_in_button"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signcard"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/terms"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="25dp"
+        facebook:cardBackgroundColor="@color/white"
+        facebook:cardElevation="5dp">
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:textAlignment="center" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/terms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="100dp"
+        android:text="By clicking log in, you agree to our Privacy Policy and\nTerms of Services."
+        android:textAlignment="center"
+        android:textColor="@color/transparentwhite" />
+
+
+</RelativeLayout>

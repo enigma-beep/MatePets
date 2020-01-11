@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MatePets</string>
+    <string name="facebook_app_id">2466576733556272</string>
+    <string name="fb_login_protocol_scheme">fb2466576733556272</string>
+
 
     <string-array name="gender">
         <item>Male</item>
