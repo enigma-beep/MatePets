@@ -1,12 +1,11 @@
 package com.example.matepets;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Splash extends AppCompatActivity {
     int viewCount=0;
@@ -32,9 +31,6 @@ public class Splash extends AppCompatActivity {
         c.close();
 
 
-
-
-
         Thread timer=new Thread()
         {
             public void run() {
@@ -53,7 +49,7 @@ public class Splash extends AppCompatActivity {
                         startActivity(i);
                     }
                     else{
-                        Intent i=new Intent(Splash.this,WelcomeActivity.class);
+                        Intent i = new Intent(Splash.this, WelcomeMainActivity.class);
                         finish();
                         startActivity(i);
                     }
