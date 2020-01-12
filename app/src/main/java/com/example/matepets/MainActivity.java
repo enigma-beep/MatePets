@@ -1,8 +1,5 @@
 package com.example.matepets;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 nextBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i=new Intent(MainActivity.this,WelcomeActivity.class);
+                        Intent i = new Intent(MainActivity.this, WelcomeMainActivity.class);
                         startActivity(i);
                         finish();
                     }

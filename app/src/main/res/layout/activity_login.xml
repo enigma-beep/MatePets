@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.matepets.LoginActivity"
-    android:background="@color/colorWhite">
+
+    tools:context="com.example.matepets.LoginActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/layout"
+        android:background="@drawable/gradient_list"
         android:orientation="vertical">
 
 
@@ -26,7 +28,7 @@
                 android:id="@+id/ivProfile"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:background="@drawable/whitenew"
+                android:background="@drawable/profile"
                 android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
@@ -51,8 +53,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Sign Up"
-        android:textColor="@color/colorPrimaryDark"
+        android:text="Set up Your Profile"
+        android:textColor="@color/white"
         android:textSize="25dp" />
 
     <TextView
@@ -66,7 +68,7 @@
         android:layout_marginBottom="0dp"
         android:text="Enter Your Details"
         android:textSize="18dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/white" />
 
 
 
@@ -79,8 +81,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary">
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white">
 
         <EditText
             android:id="@+id/etName"
@@ -92,7 +94,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Enter Your Name"
             android:inputType="textPersonName"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,8 +106,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary">
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white">
         <Button
             android:id="@+id/chCity"
             android:layout_width="match_parent"
@@ -122,7 +124,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Enter Your City"
             android:inputType="textPersonName"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,8 +137,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary">
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white">
 
         <EditText
             android:id="@+id/etPhone"
@@ -148,7 +150,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Enter Your Contact number"
             android:inputType="phone"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -168,8 +170,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary">
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white">
 
         <EditText
             android:id="@+id/etEmail"
@@ -181,7 +183,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Enter Your Email Address"
             android:inputType="textEmailAddress"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,8 +197,8 @@
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_gravity="center"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary">
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white">
 
         <EditText
             android:id="@+id/etPass"
@@ -207,7 +209,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:layout_gravity="center" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -219,8 +221,8 @@
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_gravity="center"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimary">
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white">
 
         <EditText
             android:id="@+id/etRePass"
@@ -231,7 +233,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Re-enter Password"
             android:inputType="textPassword"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:layout_gravity="center" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -260,7 +262,7 @@
         android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="75dp"
         android:elevation="10dp"/>
 
     </LinearLayout>

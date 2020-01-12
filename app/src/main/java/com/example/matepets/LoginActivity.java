@@ -4,16 +4,21 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -54,6 +59,36 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+//        if(FirebaseDatabase.getInstance().getReference("owners/"+mAuth.getCurrentUser().getUid()+"/name").getKey().toString().equals(mAuth.getCurrentUser().getDisplayName())){
+//            Intent intent=new Intent(LoginActivity.this,AccountActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//        Toast.makeText(getApplicationContext(),FirebaseDatabase.getInstance().getReference("owners/"+FirebaseAuth.getInstance().getCurrentUser().getUid()).child("name").getKey(),Toast.LENGTH_LONG).show();
+//        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference("owners/");
+//        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//                if (snapshot.hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+//                    Intent intent=new Intent(LoginActivity.this,AccountActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+
         mProfilePic=findViewById(R.id.btProfilePic);
         mName=findViewById(R.id.etName);
         mPass=findViewById(R.id.etPass);
@@ -64,9 +99,18 @@ public class LoginActivity extends AppCompatActivity {
         mCity=findViewById(R.id.etCity);
         mProfile=findViewById(R.id.ivProfile);
 
+        LinearLayout relativeLayout = findViewById(R.id.layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
         storageReference = FirebaseStorage.getInstance().getReference("owner_images");
         mAuth = FirebaseAuth.getInstance();
         mProfile.setImageResource(R.drawable.profile);
+//        Picasso.get().load(Profile.getCurrentProfile().getProfilePictureUri(400,400)).into(mProfile);
+        mEmail.setText(mAuth.getCurrentUser().getEmail());
+        mName.setText(mAuth.getCurrentUser().getDisplayName());
 
         mProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                     final String phone="+91"+mPhone.getText().toString();
-                    Intent i =new Intent(LoginActivity.this,LogActivity.class);
+                    Intent i = new Intent(LoginActivity.this, AddPetsActivity.class);
                     i.putExtra("phon",phone);
                     i.putExtra("name",mName.getText().toString());
                     i.putExtra("city",mCity.getText().toString());
@@ -215,6 +259,7 @@ public class LoginActivity extends AppCompatActivity {
         final String email = mEmail.getText().toString().trim();
         // pemail = email;
         final String pass = mPass.getText().toString().trim();
+        final String phno = mPhone.getText().toString().trim();
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             mEmail.setError("Please Enter a Valid Email!");

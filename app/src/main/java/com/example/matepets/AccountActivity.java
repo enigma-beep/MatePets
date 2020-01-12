@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -82,14 +83,25 @@ public class AccountActivity extends AppCompatActivity {
 //        fade.excludeTarget(R.id.bottomNavBar,true);
 //        getWindow().setEnterTransition(fade);
 //        getWindow().setExitTransition(fade);
+        findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                FirebaseAuth.getInstance().signOut();
+                LoginManager.getInstance().logOut();
+                mAuth.signOut();
+                Intent i = new Intent(AccountActivity.this, WelcomeMainActivity.class);
+                startActivity(i);
+                finish();
 
+            }
+        });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Intent i = new Intent(AccountActivity.this, HomeTestActivity.class);
+                        Intent i = new Intent(AccountActivity.this, FilterActivity.class);
                         i.putStringArrayListExtra("slide_image",slide_image);
                         i.putStringArrayListExtra("slide_pet_name",slide_pet_name);
                         i.putStringArrayListExtra("slide_type",slide_type);

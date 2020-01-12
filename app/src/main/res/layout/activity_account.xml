@@ -30,8 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:text="get premium"
-            android:visibility="invisible" />
+            android:id="@+id/logout"
+            android:text="Log out"
+            android:visibility="visible" />
 
 
     </FrameLayout>

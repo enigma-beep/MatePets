@@ -2,6 +2,7 @@
     <string name="app_name">MatePets</string>
     <string name="facebook_app_id">2466576733556272</string>
     <string name="fb_login_protocol_scheme">fb2466576733556272</string>
+    <string name="web_client_id">878550505491-1gsm53t751tm1l6b5gs2piu1m1rl88b1.apps.googleusercontent.com</string>
 
 
     <string-array name="gender">
