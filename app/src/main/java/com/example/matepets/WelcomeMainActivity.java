@@ -120,6 +120,7 @@ public class WelcomeMainActivity extends AppCompatActivity {
                     // User is signed in
                     // you could place other firebase code
                     //logic to save the user details to Firebase
+                    updateUInew();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -147,11 +148,11 @@ public class WelcomeMainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        if (authStateListener != null) {
-            FirebaseAuth.getInstance().signOut();
-        }
-        mAuth.addAuthStateListener(authStateListener);
-        // Check if user is signed in (non-null) and update UI accordingly.
+//        if (authStateListener != null) {
+//            FirebaseAuth.getInstance().signOut();
+//        }
+//        mAuth.addAuthStateListener(authStateListener);
+//        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
@@ -270,7 +271,7 @@ public class WelcomeMainActivity extends AppCompatActivity {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
                         if (task.isSuccessful()) {
                             Toast.makeText(WelcomeMainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            gotoProfile();
+                            updateUInew();
                         } else {
                             Log.w(TAG, "signInWithCredential" + task.getException().getMessage());
                             task.getException().printStackTrace();
@@ -295,7 +296,7 @@ public class WelcomeMainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if (authStateListener != null) {
-            mAuth.removeAuthStateListener(authStateListener);
+//            mAuth.removeAuthStateListener(authStateListener);
         }
     }
 
